@@ -8,7 +8,9 @@
     <link rel="icon" href="{{ asset('img/logo-alrescha.ico') }}" type="image/x-icon">
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('library/bootstrap/dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('library/bootstrap-social/bootstrap-social.css') }}">
@@ -27,28 +29,32 @@
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="m-3 p-4">
 
-                        <img src="{{ asset('img/logo-alrescha.png') }}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
+                        <img src="{{ asset('img/logo-alrescha.png') }}" alt="logo" width="80"
+                            class="shadow-light rounded-circle mb-5 mt-2">
 
-                        <h4 class="text-dark font-weight-normal">Selamat Datang Di <span class="font-weight-bold">Alrescha Wash</span>
+                        <h4 class="text-dark font-weight-normal">Selamat Datang Di <span
+                                class="font-weight-bold">Alrescha Wash</span>
                         </h4>
 
                         <p class="text-muted">Sebelum Anda memulai, Anda harus login atau mendaftar jika Anda belum
                             melakukannya memiliki akun.</p>
                         @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
                         @endif
                         @error('error')
-                        <div class="alert alert-danger">
-                            {{ $message }}
-                        </div>
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
                         @enderror
-                        <form method="POST" action="{{ route('actionlogin') }}" class="needs-validation" novalidate="">
+                        <form method="POST" action="{{ route('actionlogin') }}" class="needs-validation"
+                            novalidate="">
                             @csrf
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input id="username" type="username" class="form-control" name="username" tabindex="1" required autofocus value="{{ old('username') }}">
+                                <input id="username" type="username" class="form-control" name="username"
+                                    tabindex="1" required autofocus value="{{ old('username') }}">
                                 <div class="invalid-feedback">
                                     Silahkan isi username anda
                                 </div>
@@ -58,7 +64,8 @@
                                 <div class="d-block">
                                     <label for="password" class="control-label">Password</label>
                                 </div>
-                                <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                                <input id="password" type="password" class="form-control" name="password"
+                                    tabindex="2" required>
                                 <div class="invalid-feedback">
                                     Silahkan isi password anda
                                 </div>
@@ -68,14 +75,15 @@
                                 {{-- <a href="auth-forgot-password.html" class="float-left mt-3">
                                     Forgot Password?
                                 </a> --}}
-                                <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
+                                <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right"
+                                    tabindex="4">
                                     Login
                                 </button>
                             </div>
 
-                            {{-- <div class="mt-5 text-center">
-                                Don't have an account? <a href="auth-register.html">Create new one</a>
-                            </div> --}}
+                            <div class="mt-5 text-center">
+                                Belum punya akun? <a href="{{ Route('register') }}">Buat Akun</a>
+                            </div>
                         </form>
 
                         <div class="text-small mt-5 text-center">
@@ -83,7 +91,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-12 order-lg-2 min-vh-100 background-walk-y position-relative overlay-gradient-bottom order-1" data-background="{{ asset('img/unsplash/carpet.jpg') }}">
+                <div class="col-lg-8 col-12 order-lg-2 min-vh-100 background-walk-y position-relative overlay-gradient-bottom order-1"
+                    data-background="{{ asset('img/unsplash/carpet.jpg') }}">
                     <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
                             <div class="mb-5 pb-3">

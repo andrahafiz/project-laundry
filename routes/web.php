@@ -26,5 +26,7 @@ Route::get('reset', function () {
 });
 
 Route::get('/', [AuthController::class, 'login_admin'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'actionRegister'])->name('actionregister');
 Route::post('actionlogin', [AuthController::class, 'actionlogin'])->name('actionlogin');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');

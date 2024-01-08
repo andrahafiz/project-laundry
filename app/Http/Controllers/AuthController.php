@@ -2,14 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\Console\Input\Input;
 
 class AuthController extends Controller
 {
     //
+    public function register()
+    {
+        return view('pages.auth-register');
+    }
+    public function actionRegister(RegisterRequest $request)
+    {
+        $register = User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'address' => $request->alamat,
+            'no_hp' => $request->no_hp,
+
+        ]);
+        return redirect('/')->with('success', "Berhasil daftar akun,silahkan login");;
+    }
+
     public function login_admin()
     {
         # code...
