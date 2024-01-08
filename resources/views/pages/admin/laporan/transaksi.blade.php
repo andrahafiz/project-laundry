@@ -90,7 +90,7 @@
                                                 </th>
                                                 <th>ID Invoice</th>
                                                 <th>Total Transaksi</th>
-                                                <th>Kasir</th>
+                                                <th>Customer</th>
                                                 <th>Invoice</th>
                                                 <th>Tanggal Transaksi</th>
                                             </tr>
@@ -114,7 +114,7 @@
                                                     </td>
                                                     <td> {{ $transaksi->created_at->isoFormat('dddd, D MMMM Y H:ss') }}
                                                     </td>
-                                                   
+
                                                 </tr>
                                             @endforeach
                                         </tbody>

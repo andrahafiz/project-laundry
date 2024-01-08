@@ -49,7 +49,7 @@
                                 <div class="row">
                                     <div class="col-md-6 text-md-left">
                                         <address>
-                                            <strong>Kasir:</strong><br>
+                                            <strong>Customer:</strong><br>
                                             {{ $transactions->user->name }}
 
                                         </address>

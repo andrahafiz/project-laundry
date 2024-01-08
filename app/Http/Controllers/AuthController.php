@@ -35,7 +35,7 @@ class AuthController extends Controller
             if (auth()->user()->roles === 'ADMIN') {
                 return redirect()->intended('admin/produk');
             } elseif (auth()->user()->roles === 'CUSTOMER') {
-                return redirect()->intended('customer/produk');
+                return redirect()->intended('customer/transaksi');
             } else {
                 return back()->withErrors([
                     'error' => 'Role tidak ditemukan',

@@ -199,7 +199,7 @@
                                             <div class="col-3 text-right">
                                                 <div class="h5 font-weight-bold text-dark">{{ auth()->user()->name }}
                                                 </div>
-                                                <div class="product-subtitle">Kasir</div>
+                                                <div class="product-subtitle">Customer</div>
                                             </div>
                                             <div class="col-3 mr-1 text-right">
                                                 <div class="h5 font-weight-bold text-success">

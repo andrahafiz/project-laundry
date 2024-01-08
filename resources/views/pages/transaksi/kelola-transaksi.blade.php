@@ -48,7 +48,7 @@
                                 <div class="row">
                                     <div class="col-md-4 text-md-left">
                                         <h4>
-                                            <strong>Kasir:</strong>
+                                            <strong>Customer</strong>
                                         </h4>
                                         <h5 class="text-muted"> {{ $transactions->user->name }}</h5>
                                     </div>

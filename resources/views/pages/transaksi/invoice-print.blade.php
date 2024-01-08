@@ -124,7 +124,7 @@
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
             <tr>
-                <th class="w-50">Kasir</th>
+                <th class="w-50">Customer</th>
                 <th class="w-50">Customer</th>
             </tr>
             <tr>

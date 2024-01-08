@@ -63,6 +63,7 @@ Route::controller(KasirController::class)->group(
     function () {
         Route::get('/kasir', 'index')->name('kasir.index');
         Route::get('/buktitransfer/{transaction}', 'buktitransfer')->name('buktitransfer');
+        Route::put('/buktitransfer/{transaction}',  'uploadbuktitransfer')->name('uploadbuktitransfer');
     }
 );
 
