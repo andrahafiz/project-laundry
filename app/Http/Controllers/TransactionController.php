@@ -36,8 +36,7 @@ class TransactionController extends Controller
 
     public function update(Request $request, Transaction $transaction)
     {
-        $kembalian = str_replace('.', '', str_replace('Rp. ', '', $request->uang_kembalian));
-        // dd($request->all());
+        $kembalian = str_replace('.', '', str_replace('Rp. ', '', $request->uang_kembalian ?? 0));
         try {
             DB::transaction(function () use ($transaction, $request, $kembalian) {
                 $transaction->update([

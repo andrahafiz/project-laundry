@@ -105,11 +105,10 @@
                                             </h4>
                                             @if ($transactions->status_transactions == 0)
                                                 <span class="badge badge-warning">Pengajuan</span>
-                                                @if ($transactions->transfer_proof != null || $transactions->transfer_proof != 'avatar.jpg')
+                                                @if ($transactions->payment_method == 1 && $transactions->transfer_proof != 'avatar.jpg')
                                                     <a alt="image" class="ml-3"
                                                         href="{{ Helper::setUrlImage($transactions->transfer_proof) }}">Bukti
                                                         Transfer</a>
-                                                @else
                                                 @endif
                                             @elseif($transactions->status_transactions == 1 && $transactions->payment_method == 1)
                                                 <span class="badge badge-warning">Menunggu Pembayaran</span>

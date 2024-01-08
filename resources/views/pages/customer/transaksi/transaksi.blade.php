@@ -106,20 +106,25 @@
                                                     <td class="align-middle">
                                                         @if ($transaksi->status_transactions == 0)
                                                             <span class="badge badge-warning">Pengajuan</span>
-                                                        @elseif($transactions->status_transactions == 1 && $transactions->payment_method == 1)
+                                                        @elseif($transaksi->status_transactions == 1 && $transaksi->payment_method == 1)
                                                             <span class="badge badge-warning">Menunggu Pembayaran</span>
-                                                        @elseif($transactions->status_transactions == 2)
+                                                        @elseif($transaksi->status_transactions == 2)
                                                             <span class="badge badge-primary">Sedang Dicuci</span>
-                                                        @elseif($transactions->status_transactions == 3)
+                                                        @elseif($transaksi->status_transactions == 3)
                                                             <span class="badge badge-primary">Sudah Dapat Diambil</span>
-                                                        @elseif($transactions->status_transactions == 4)
+                                                        @elseif($transaksi->status_transactions == 4)
                                                             <span class="badge badge-success">Selesai</span>
-                                                        @elseif($transactions->status_transactions == 6)
+                                                        @elseif($transaksi->status_transactions == 6)
                                                             <span class="badge badge-success">Cucian Diantar</span>
-                                                        @elseif($transactions->status_transactions == 7)
+                                                        @elseif($transaksi->status_transactions == 7)
                                                             <span class="badge badge-success">Cucian Dijemput</span>
                                                         @else
                                                             <span class="badge badge-secondary">Tidak Ada Status</span>
+                                                        @endif
+                                                        @if ($transaksi->payment_method == 1 && $transaksi->transfer_proof != 'avatar.jpg')
+                                                            <a alt="image" class="ml-3"
+                                                                href="{{ Helper::setUrlImage($transaksi->transfer_proof) }}">Bukti
+                                                                Transfer</a>
                                                         @endif
                                                     </td>
                                                 </tr>

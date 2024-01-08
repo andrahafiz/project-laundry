@@ -66,17 +66,6 @@ Route::controller(UserController::class)->group(
     }
 );
 
-Route::controller(CatatanTokoController::class)->group(
-    function () {
-        Route::get('/catatantoko', 'index')->name('catatantoko.index');
-        Route::get('/catatantoko/tambah-catatantoko',  'create')->name('catatantoko.tambah-catatantoko');
-        Route::post('/catatantoko/tambah-catatantoko/store',  'store')->name('catatantoko.store');
-        Route::get('/catatantoko/edit-catatantoko/{catatantoko}',  'edit')->name('catatantoko.edit');
-        Route::put('/catatantoko/edit-catatantoko/update/{catatantoko}',  'update')->name('catatantoko.update');
-        Route::delete('/catatantoko/hapus-catatantoko/{catatantoko}',  'destroy')->name('catatantoko.destroy');
-    }
-);
-
 Route::controller(KasirController::class)->group(
     function () {
         Route::get('/kasir', 'index')->name('kasir.index');
@@ -110,50 +99,3 @@ Route::controller(CheckoutController::class)->group(
         Route::post('/checkout', 'store')->name('checkout.store');
     }
 );
-Route::controller(ReportController::class)->group(
-    function () {
-        Route::get('/laporan/transaksi', 'index')->name('laporan.transaksi');
-        Route::get('/laporan/transaksi/print', 'print_transaksi')->name('laporan.transaksi.print');
-    }
-);
-Route::controller(FeedbackController::class)->group(
-    function () {
-        Route::get('/feedback', 'index')->name('feedback.index');
-        Route::put('/feedback/update/{feedback}', 'update')->name('feedback.update');
-        Route::get('/feedback/detail/{feedback}',  'show')->name('feedback.show');
-        Route::delete('/feedback/{feedback}',  'destroy')->name('feedback.destroy');
-    }
-);
-
-Route::prefix('laporan')->name('laporan.')->group(function () {
-    Route::controller(ModalController::class)->group(
-        function () {
-            Route::get('/modal/tambah', 'create')->name('modal.create');
-            Route::post('/modal/tambah', 'store')->name('modal.store');
-            Route::get('/modal', 'index')->name('modal.index');
-            Route::get('/modal/edit/{modal}',  'edit')->name('modal.edit');
-            Route::put('/modal/edit/{modal}', 'update')->name('modal.update');
-            Route::delete('/modal/{modal}',  'destroy')->name('modal.destroy');
-        }
-    );
-    Route::controller(CashFlowController::class)->group(
-        function () {
-            Route::get('/cashflow/tambah', 'create')->name('cashflow.create');
-            Route::post('/cashflow/tambah', 'store')->name('cashflow.store');
-            Route::get('/cashflow', 'index')->name('cashflow.index');
-            Route::get('/cashflow/edit/{cashflow}',  'edit')->name('cashflow.edit');
-            Route::put('/cashflow/edit/{cashflow}', 'update')->name('cashflow.update');
-            Route::delete('/cashflow/{cashflow}',  'destroy')->name('cashflow.destroy');
-        }
-    );
-    Route::controller(ProfitLossController::class)->group(
-        function () {
-            Route::get('/profitloss/tambah', 'create')->name('profitloss.create');
-            Route::post('/profitloss/tambah', 'store')->name('profitloss.store');
-            Route::get('/profitloss', 'index')->name('profitloss.index');
-            Route::get('/profitloss/edit/{profitloss}',  'edit')->name('profitloss.edit');
-            Route::put('/profitloss/edit/{profitloss}', 'update')->name('profitloss.update');
-            Route::delete('/profitloss/{profitloss}',  'destroy')->name('profitloss.destroy');
-        }
-    );
-});
