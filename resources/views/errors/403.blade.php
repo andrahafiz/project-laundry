@@ -32,8 +32,7 @@
                     </div>
                 </form>
                 <div class="mt-3">
-                    <a href="{{ URL::previous() }}">Kembali ke sebelumnya</a> |
-                    <a href="dashboard">Kembali ke beranda</a>
+                    <a href="{{ URL::previous() }}">Kembali ke sebelumnya</a>
                 </div>
             </div>
         </div>

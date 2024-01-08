@@ -10,7 +10,7 @@ use Dyrynda\Database\Support\CascadeSoftDeletes;
 class Transaction extends Model
 {
     use HasFactory, SoftDeletes, CascadeSoftDeletes;
-    protected $cascadeDeletes = ['feedback', 'items'];
+    protected $cascadeDeletes = ['items'];
     protected $table = "transactions";
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -25,10 +25,6 @@ class Transaction extends Model
         'change' => 'integer',
     ];
 
-    public function feedback()
-    {
-        return $this->hasOne(Feedback::class, 'transactions_id', 'id');
-    }
 
     public function user()
     {

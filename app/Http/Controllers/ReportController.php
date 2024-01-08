@@ -27,12 +27,11 @@ class ReportController extends Controller
 
     public function print_transaksi(LaporanTransaksiRequest $request)
     {
-        $transactions = Transaction::with('feedback')
-            ->when($request->has('tgl_awal'), function (Builder $query) use ($request) {
-                return $query->whereDate('created_at', '>=', $request->query('tgl_awal'));
-            })->when($request->has('tgl_akhir'), function (Builder $query) use ($request) {
-                return $query->whereDate('created_at', '<=', $request->query('tgl_akhir'));
-            })->get();
+        $transactions = Transaction::when($request->has('tgl_awal'), function (Builder $query) use ($request) {
+            return $query->whereDate('created_at', '>=', $request->query('tgl_awal'));
+        })->when($request->has('tgl_akhir'), function (Builder $query) use ($request) {
+            return $query->whereDate('created_at', '<=', $request->query('tgl_akhir'));
+        })->get();
 
         $pdf = app('dompdf.wrapper')->loadView('pages.admin.laporan.print-transaksi', compact('transactions', 'request'));
         $pdf->setPaper('A4', 'potrait');

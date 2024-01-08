@@ -123,24 +123,6 @@
     </div>
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
-            <tr>
-                <th class="w-50">Customer</th>
-                <th class="w-50">Customer</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="box-text">
-                        <p>{{ ucwords($transactions->user->name) }}</p>
-                        <p>No Hp: {{ $transactions->user->no_hp ?? '-' }}</p>
-                    </div>
-                </td>
-                <td>
-                    <div class="box-text">
-                        <p>{{ ucwords($transactions->feedback->customer_name) }}</p>
-                        <p>{{ $transactions->feedback->nohp_customer ?? '-' }}</p>
-                    </div>
-                </td>
-            </tr>
         </table>
     </div>
     <div class="table-section bill-tbl w-100 mt-10">

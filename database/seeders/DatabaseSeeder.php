@@ -35,6 +35,5 @@ class DatabaseSeeder extends Seeder
         \App\Models\Product::factory(count: 1)->create([
             'unit' => 'Pcs'
         ]);
-        // \App\Models\Feedback::factory(count: 1)->create();
     }
 }

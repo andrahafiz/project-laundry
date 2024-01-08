@@ -5,7 +5,6 @@ use App\Http\Controllers\KasirController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Customer\UserController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\InvoiceController;

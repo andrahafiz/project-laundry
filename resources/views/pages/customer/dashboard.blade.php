@@ -171,7 +171,6 @@
                                 <table class="table-striped table">
                                     <tr>
                                         <th>Invoice ID</th>
-                                        <th>Customer</th>
                                         <th>Total Transaksi</th>
                                         <th>Tanggal Transaksi</th>
                                         <th>Aksi</th>
@@ -181,8 +180,6 @@
                                             <td>
                                                 INV/{{ $transaksi->id }}
                                             </td>
-                                            <td class="font-weight-600">
-                                                {{ $transaksi->feedback->customer_name ?? 'Tidak tercatat' }}</td>
                                             <td>
                                                 Rp. {{ Helper::formatRupiah($transaksi->total_price) }}</td>
                                             <td> {{ $transaksi->created_at->isoFormat('dddd, D MMMM Y H:ss') }}

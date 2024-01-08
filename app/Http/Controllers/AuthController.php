@@ -16,9 +16,9 @@ class AuthController extends Controller
         if (Auth::check()) {
 
             if (auth()->user()->roles === 'ADMIN') {
-                return redirect('admin/dashboard');
+                return redirect('admin/produk');
             }
-            return redirect('customer/dashboard');
+            return redirect('customer/transaksi');
         } else {
             return view('pages.auth-login');
         }

@@ -11,8 +11,7 @@ class InvoiceController extends Controller
     public function invoice(Transaction $transaction)
     {
         $total = 0;
-        $transaction->load('feedback');
-        // dd($transaction->feedback->nohp_customer);
+        $transaction;
         foreach ($transaction->items as $item) {
             $total += $item->total;
         }
@@ -25,8 +24,7 @@ class InvoiceController extends Controller
 
     public function print_invoice(Transaction $transaction)
     {
-        $transactions = $transaction->load('feedback');
-        // return view('pages.transaksi.invoice-print', compact('transactions'));
+        $transactions = $transaction;
         $pdf = app('dompdf.wrapper')->loadView('pages.transaksi.invoice-print', compact('transactions'));
         $pdf->setPaper('A4', 'potrait');
 

@@ -18,7 +18,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::with('feedback')->orderBy('created_at', 'desc')->get();
+        $transactions = Transaction::orderBy('created_at', 'desc')->get();
         return view('pages.transaksi.transaksi', ['type_menu' => 'transaksi', 'transactions' => $transactions]);
     }
 
