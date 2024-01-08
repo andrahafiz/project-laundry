@@ -28,7 +28,7 @@ class AuthController extends Controller
             'no_hp' => $request->no_hp,
 
         ]);
-        return redirect('/')->with('success', "Berhasil daftar akun,silahkan login");;
+        return redirect('/')->with('success', "Berhasil mendaftarkan akun, silahkan login");;
     }
 
     public function login_admin()
