@@ -12,9 +12,11 @@
     </form>
     <ul class="navbar-nav navbar-right">
         <li class="dropdown dropdown-list-toggle">
-            <a href="{{ route(Helper::AdminOrUser('cart.index')) }}" class="nav-link nav-link-lg beep">
-                <i class="fas fa-basket-shopping"></i>
-            </a>
+            @if (Auth::user()->roles == 'CUSTOMER')
+                <a href="{{ route(Helper::AdminOrUser('cart.index')) }}" class="nav-link nav-link-lg beep">
+                    <i class="fas fa-basket-shopping"></i>
+                </a>
+            @endif
 
         </li>
         <li class="dropdown"><a href="#" data-toggle="dropdown"

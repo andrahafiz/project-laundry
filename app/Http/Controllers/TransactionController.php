@@ -23,28 +23,6 @@ class TransactionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-        dd($request->all());
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -55,27 +33,23 @@ class TransactionController extends Controller
         return view('pages.transaksi.kelola-transaksi', ['type_menu' => '', 'transactions' => $transaction]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, Transaction $transaction)
     {
-        //
+        $kembalian = str_replace('.', '', str_replace('Rp. ', '', $request->uang_kembalian));
+        // dd($request->all());
+        try {
+            DB::transaction(function () use ($transaction, $request, $kembalian) {
+                $transaction->update([
+                    'money' => $request->inp_uang ?? 0,
+                    'change' => $kembalian ?? 0,
+                    'status_transactions' => $request->status,
+                ]);
+            });
+            return redirect()->route(Helper::AdminOrUser('transaksi.index'))->with('success', "Data transaksi INV/'{$transaction->id}' berhasil diubah");
+        } catch (\Throwable $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**

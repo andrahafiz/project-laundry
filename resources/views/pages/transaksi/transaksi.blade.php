@@ -115,6 +115,10 @@
                                                             <span class="badge badge-primary">Sudah Dapat Diambil</span>
                                                         @elseif($transaksi->status_transactions == 4)
                                                             <span class="badge badge-success">Selesai</span>
+                                                        @elseif($transaksi->status_transactions == 6)
+                                                            <span class="badge badge-success">Cucian Diantar</span>
+                                                        @elseif($transaksi->status_transactions == 7)
+                                                            <span class="badge badge-success">Cucian Dijemput</span>
                                                         @else
                                                             <span class="badge badge-secondary">Tidak Ada Status</span>
                                                         @endif

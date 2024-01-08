@@ -95,6 +95,7 @@ Route::controller(TransactionController::class)->group(
     function () {
         Route::get('/transaksi', 'index')->name('transaksi.index');
         Route::get('/transaksi/{transaction}', 'show')->name('transaksi.edit');
+        Route::put('/transaksi/{transaction}', 'update')->name('transaksi.update');
         Route::delete('/transaksi/{transaction}/destroy', 'destroy')->name('transaksi.destory');
     }
 );

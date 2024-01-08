@@ -51,11 +51,7 @@ Route::controller(CategoryController::class)->group(
 Route::controller(UserController::class)->group(
     function () {
         Route::get('/user', 'index')->name('user.index');
-        // Route::get('/user/tambah-user',  'create')->name('user.tambah-user');
-        // Route::post('/user/tambah-user/store',  'store')->name('user.store');
-        // Route::get('/user/edit-user/{user}',  'edit')->name('user.edit');
         Route::put('/user/edit-user/update/{user}',  'update')->name('user.update');
-        // Route::delete('/user/hapus-user/{user}',  'destroy')->name('user.destroy');
     }
 );
 

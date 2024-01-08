@@ -21,7 +21,7 @@ class CheckoutController extends Controller
 
     public function store(CheckoutStoreRequest $request)
     {
-        $uang = $request->inp_uang ?? 0;
+        $uang = $request->metode_pembayaran == 0 ? 0 : $request->totalPrice;
         $kembalian = str_replace('.', '', str_replace('Rp. ', '', $request->uang_kembalian));
         $carts = Cart::with(['product', 'user'])
             ->where('users_id', Auth::user()->id)
@@ -51,23 +51,10 @@ class CheckoutController extends Controller
                     ]);
                 }
 
-
-
                 // Delete cart data dengan id user yang sedang login
                 Cart::with(['product', 'user'])
                     ->where('users_id', $user)
                     ->delete();
-
-                // Menambahkan data feedback
-                $feedback =  Feedback::create([
-                    'transactions_id' => $transaction->id,
-                    'code'            => $this->generateCodeNumber(),
-                    'customer_name'   => $request->customer_name,
-                    'nohp_customer'   => $request->nohp_customer,
-                    'user_id'         => $user,
-                ]);
-
-                $this->sendWhatsapp($request, $feedback);
             });
             if ($transaction['payment_method'] == 1) {
                 return redirect()->route('customer.buktitransfer', $transaction['id'])->with('success', "Transaksi Selesai, Silahkan Upload Bukti Transfer");
@@ -77,39 +64,5 @@ class CheckoutController extends Controller
         } catch (\Throwable $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()])->withInput();
         }
-    }
-
-    function sendWhatsapp($request, $feedback)
-    {
-        $name = ucfirst($request->customer_name);
-        $nohp = $request->nohp_customer;
-        $linkfeedback = config('app.url') . "feedback/" . $feedback->code;
-        $response = Http::withHeaders([
-            'Authorization' => env('Wa_Authorization')
-        ])->post('https://api.fonnte.com/send', [
-            'target' => "$nohp|$name",
-            'message' => 'Terima kasih {name} telah membeli produk di Alrescha Wash. Jangan lupa mengisi ulasan untuk membantu kami meningkatkan pelayanan.
-            Beri ulasan mu pada link berikut ' . $linkfeedback . ' .
-            Terima kasih atas ketersediaan Anda mengisi kolom ulasan. Semua kritik dan saran yang disampaikan akan menjadi bahan evaluasi bagi kami.',
-            'delay' => '2',
-            'countryCode' => '62',
-        ]);
-        Log::info($response);
-    }
-
-    function generateCodeNumber()
-    {
-        $number = mt_rand(1000000000, 9999999999);
-
-        if ($this->codeNumberExists($number)) {
-            return $this->generateCodeNumber();
-        }
-
-        return $number;
-    }
-
-    function codeNumberExists($number)
-    {
-        return Feedback::whereCode($number)->exists();
     }
 }
